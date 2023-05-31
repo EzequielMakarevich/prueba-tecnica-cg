@@ -1,0 +1,4 @@
+<div class="container d-flex">
+    <app-sidebar (subcategory)="getSubcategoryId($event)"></app-sidebar>
+    <app-products-list [subcategory]="subcategory"></app-products-list>
+</div>
