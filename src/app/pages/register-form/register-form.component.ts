@@ -13,7 +13,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.scss']
 })
-//nombre, apellido, dni, mail y teléfono
 export class RegisterFormComponent implements OnInit {
   registerForm = new FormBuilder().group({
     name: ['', Validators.required],
@@ -21,7 +20,7 @@ export class RegisterFormComponent implements OnInit {
     dni: ['', Validators.required],
     tel: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]		
+    password: ['', [Validators.required, Validators.minLength(8)]]		
 	});
 
   matcher = new MyErrorStateMatcher();
@@ -60,6 +59,8 @@ export class RegisterFormComponent implements OnInit {
   sendForm(){
     if (this.registerForm.valid){
       localStorage.setItem('registerData', JSON.stringify(this.registerForm.value))      
+    } else {
+      console.log(this.password)
     }
   }
 
