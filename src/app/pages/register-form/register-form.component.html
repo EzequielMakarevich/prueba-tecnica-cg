@@ -1,0 +1,62 @@
+<div class="container d-flex align-item-center justify-content-center mt-5">
+    <mat-card style="max-width: 600px;">
+        <mat-card-title class="text-center mb-4">Registrarse</mat-card-title>
+        <form [formGroup]="registerForm" class="d-flex flex-column align-item-center">
+            <div class="d-flex align-item-center justify-content-between mb-2">
+                <mat-form-field appearance="fill" style="width: 45%;">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name" type="text">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="name?.hasError('required')">
+                        El nombre es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="width: 45%;">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="lastName" type="text">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="lastName?.hasError('required')">
+                        El apellido es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="mb-2" appearance="fill">
+                <mat-label>DNI</mat-label>
+                <input matInput formControlName="dni" type="text">
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <mat-error *ngIf="dni?.hasError('required')">
+                    El DNI es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="mb-2" appearance="fill">
+                <mat-label>Telefono</mat-label>
+                <input matInput formControlName="tel" type="tel">
+                <mat-icon matSuffix>call</mat-icon>
+                <mat-error *ngIf="tel?.hasError('required')">
+                    El Teléfono es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="mb-2" appearance="fill">
+                <mat-label>E-Mail</mat-label>
+                <input matInput formControlName="email" type="email">
+                <mat-icon matSuffix>mail</mat-icon>
+                <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+                    El email debe ser válido
+                </mat-error>
+                <mat-error *ngIf="email?.hasError('required')">
+                    El email es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="mb-2" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-icon matSuffix>key</mat-icon>
+                <mat-error *ngIf="password?.hasError('required')">
+                    La contraseña es <strong>requerida</strong>
+                </mat-error>
+            </mat-form-field>
+            <button class="w-100" mat-raised-button color="warn" type="submit" (click)="sendForm()">REGISTRARME</button>
+        </form>
+    </mat-card>
+</div>
