@@ -1,0 +1,76 @@
+<mat-drawer-container class="custom-container" [hasBackdrop]="false" autosize>
+    <div class="container-fluid d-flex justify-content-center align-items-center jumbotron px-0">
+        <div class="container">
+            <div class="jumbotron-mobile ">
+
+                <h1 *ngIf="this.subcategory !== null">
+                    {{categoriesList[subcategory!]}}</h1>
+                <h1 *ngIf="this.subcategory === null">Lista de productos</h1>
+                <button mat-button (click)="drawer.toggle()"> Filtrar por subcategoría
+                    <mat-icon>filter_list</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="custom-sidenav-content justify-content-end mt-4">
+            <mat-chip-list>
+                <mat-chip *ngIf="this.subcategory !== null" (removed)="resetFilter()">
+                    {{categoriesList[subcategory!]}}
+                    <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <mat-card class="d-flex align-items-center p-0 custom-card"
+                    *ngFor="let product of filteredList">
+                    <div>
+                        <img mat-card-image class="p-5"
+                            src="https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_{{product.imagenes[0].nombre}}-med.jpg">
+                    </div>
+                    <div class="d-flex flex-column p-3">
+                        <mat-card-title class="custom-card-title">{{product.nombre}}</mat-card-title>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <p class="price">
+                                {{product.precio | currency:'ARS':'symbol-narrow'}}
+                            </p>
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip (click)="filterSubcategory(product.id_subcategoria)" class="chip-style ml-4">
+                                {{categoriesList[product.id_subcategoria]}}
+                            </mat-chip>
+                        </mat-chip-list>
+                        <div>
+                            <button mat-raised-button class="mt-4 button-color" (click)="addToCart()">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    <button class="float-button" mat-fab>
+        <mat-icon [matBadge]="productsQuantity" [matBadgeColor]="'warn'">shopping_cart</mat-icon>
+    </button>
+
+    <mat-drawer #drawer class="custom-sidenav" [position]="'end'" mode="over">
+        <div class="d-flex justify-content-end m-5">
+            <mat-icon class="menu-text" (click)="drawer.toggle()">close</mat-icon>
+        </div>
+        <div class="d-flex flex-column mt-4">
+            <h1 class="text-center sidebar-title">Subcategorías</h1>
+            <button mat-button *ngFor="let subcategory of subcategories" class="sidebar-button"
+                (click)="filterSubcategory(subcategory.id); drawer.toggle()">{{subcategory.nombre}}</button>
+
+        </div>
+
+    </mat-drawer>
+</mat-drawer-container>

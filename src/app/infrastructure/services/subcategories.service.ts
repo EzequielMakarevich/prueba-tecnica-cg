@@ -6,7 +6,7 @@ import { ISubcategories } from '../entities/subcategories.interface';
   providedIn: 'root'
 })
 export class SubcategoriesService {
-  url = 'https://static.compragamer.com/test/'
+  url = 'https://static.compragamer.com/test/';
   constructor(private http: HttpClient) { }
   getSubcategoriesData() {
     return this.http.get<ISubcategories[]>(this.url + 'subcategorias.json');
