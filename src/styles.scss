@@ -1,2 +1,12 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F5F9FF;}
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Barlow'
+);
+
+@include angular-material-typography($custom-typography);
+
+html, body { 
+    font-family: 'Barlow', sans-serif !important;
+    height: 100%; 
+}
+body { margin: 0; font-family: 'Barlow', sans-serif !important; background-color: #F5F9FF;}
