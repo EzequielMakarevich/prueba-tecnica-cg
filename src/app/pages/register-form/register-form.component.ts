@@ -13,23 +13,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.scss']
 })
-export class RegisterFormComponent implements OnInit {
+export class RegisterFormComponent {
   registerForm = new FormBuilder().group({
     name: ['', Validators.required],
     lastName: ['', Validators.required],
     dni: ['', Validators.required],
     tel: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]		
-	});
+    password: ['', [Validators.required, Validators.minLength(8)]]
+  });
 
   matcher = new MyErrorStateMatcher();
-
-  
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   get name() {
     return this.registerForm.get('name')
@@ -54,13 +48,10 @@ export class RegisterFormComponent implements OnInit {
   get password() {
     return this.registerForm.get('password')
   }
-  
 
-  sendForm(){
-    if (this.registerForm.valid){
-      localStorage.setItem('registerData', JSON.stringify(this.registerForm.value))      
-    } else {
-      console.log(this.password)
+  sendForm() {
+    if (this.registerForm.valid) {
+      localStorage.setItem('registerData', JSON.stringify(this.registerForm.value))
     }
   }
 

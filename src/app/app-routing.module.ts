@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegisterFormComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

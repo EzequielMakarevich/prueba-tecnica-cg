@@ -5,10 +5,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
- @Input() subcategory!: number | null;
-  getSubcategoryId(event: number | null){
-    this.subcategory = event;
-  }
-
-}
+export class HomeComponent {}
