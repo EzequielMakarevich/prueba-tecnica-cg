@@ -27,7 +27,7 @@
 
                 <mat-form-field class="mb-2" appearance="fill">
                     <mat-label>DNI</mat-label>
-                    <input matInput formControlName="dni" type="text">
+                    <input matInput formControlName="dni" onKeyPress="return event.charCode >= 48 && event.charCode <= 57;" type="text">
                     <mat-icon matSuffix>account_circle</mat-icon>
                     <mat-error *ngIf="dni?.hasError('required')">
                         El DNI es <strong>requerido</strong>
@@ -36,7 +36,7 @@
 
                 <mat-form-field class="mb-2" appearance="fill">
                     <mat-label>Telefono</mat-label>
-                    <input matInput formControlName="tel" type="tel">
+                    <input matInput onKeyPress="return event.charCode >= 48 && event.charCode <= 57;" formControlName="tel" type="tel">
                     <mat-icon matSuffix>call</mat-icon>
                     <mat-error *ngIf="tel?.hasError('required')">
                         El Teléfono es <strong>requerido</strong>

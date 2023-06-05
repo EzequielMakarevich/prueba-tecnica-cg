@@ -19,10 +19,6 @@
     margin: 0px;
 }
 
-
-
-
-
 .custom-sidenav-content {
     display: flex;
     height: 100%;
@@ -73,6 +69,7 @@ img {
 }
 .button-color{
     background-color: #fd611a;
+    color: white;
     @media (max-width: 768px) {
         width: 100%;
     }
@@ -107,9 +104,10 @@ img {
 }
 .sidebar-button{
     color: black; width: 100%;
+    outline: none !important;
 }
 .float-button {
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
         display: none;
     }
     position: fixed;
