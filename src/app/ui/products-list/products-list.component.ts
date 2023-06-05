@@ -15,7 +15,7 @@ export class ProductsListComponent implements OnInit {
   subcategory: number | null = null;
   subcategories: ISubcategories[] = []
   products: IProducts[] = [];
-  filteredList: IProducts[] = [];
+  filteredList!: IProducts[];
   categoriesList: { [id: number]: string } = {};
   productsQuantity = 0;
   constructor(private productsService: ProductsService, private subcategoriesService: SubcategoriesService, private cartService: CartService, private _snackBar: MatSnackBar) { }
