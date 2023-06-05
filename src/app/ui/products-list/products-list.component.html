@@ -27,7 +27,7 @@
             </mat-chip-list>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngIf="filteredList.length > 0">
                 <mat-card class="d-flex align-items-center p-0 custom-card" *ngFor="let product of filteredList">
                     <div>
                         <img mat-card-image class="p-5"
@@ -52,6 +52,11 @@
                         </div>
                     </div>
                 </mat-card>
+                
+            </div>
+            <div class="container d-flex justify-content-center align-items-center flex-column mt-4" *ngIf="filteredList.length < 1">
+                <img src="../../../assets/img/Search Engine_Two Color.svg" alt="No se encontraron productos">
+                <h1 class="text-center mt-2">No se encontraron productos para {{categoriesList[subcategory!] | lowercase}}</h1>
             </div>
         </div>
     </div>
@@ -60,7 +65,7 @@
         <mat-icon [matBadge]="productsQuantity" [matBadgeColor]="'warn'">shopping_cart</mat-icon>
     </button>
 
-    <mat-drawer #drawer class="custom-sidenav" [position]="'end'" mode="over">
+    <mat-drawer #drawer class="custom-sidenav" [autoFocus]="false" [position]="'end'" mode="over">
         <div class="d-flex justify-content-end m-5">
             <mat-icon class="menu-text" (click)="drawer.toggle()">close</mat-icon>
         </div>

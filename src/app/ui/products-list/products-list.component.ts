@@ -32,9 +32,9 @@ export class ProductsListComponent implements OnInit {
   }
   filterSubcategory(subcategoryId: number) {
     this.subcategory = subcategoryId
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' })
     if (subcategoryId) {
       this.filteredList = this.products.filter(product => product.id_subcategoria === subcategoryId);
-      window.scroll({ top: 0, left: 0, behavior: 'smooth' })
     } else {
       this.resetFilter();
     }

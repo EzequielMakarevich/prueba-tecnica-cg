@@ -1,5 +1,15 @@
-.test {
+.custom-container {
     min-height: calc(100vh - 190px);
     display: flex;
     align-items: center;
+}
+.w-48 {
+    width: 48%;
+}
+.register-button {
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+    
+   
 }

@@ -1,7 +1,6 @@
 .custom-container {
     background-color: transparent;
-    min-height: 100vh;
-    color: black;
+    min-height: calc(100vh - 190px);
 }
 .jumbotron {
     height: 200px;
@@ -104,8 +103,7 @@ img {
     color: black;
 }
 .sidebar-button{
-    color: black; width: 100%;
-    outline: none !important;
+    width: 100%;
 }
 .float-button {
     @media (min-width: 992px) {
